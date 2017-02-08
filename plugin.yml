@@ -1,0 +1,61 @@
+---
+#   _____                __  _         ______     _  _  _               
+#  / ____|              / _|(_)       |  ____|   | |(_)| |              
+# | |      ___   _ __  | |_  _   __ _ | |__    __| | _ | |_  ___   _ __ 
+# | |     / _ \ | '_ \ |  _|| | / _` ||  __|  / _` || || __|/ _ \ | '__|
+# | |____| (_) || | | || |  | || (_| || |____| (_| || || |_| (_) || |   
+#  \_____|\___/ |_| |_||_|  |_| \__, ||______|\__,_||_| \__|\___/ |_|   
+#                                __/ |                                  
+#                               |___/                                   
+# Too lazy to go to a folder and edit configs? Do it directly in game !
+
+
+name: ConfigEditor
+author:  Ad5001
+description: Too lazy to go to a folder and edit configs? Do it directly in game !
+version: 1.0
+api: [2.0.0, 3.0.0-ALPHA1, 3.0.0-ALPHA2, 3.0.0-ALPHA3]
+main: Ad5001\ConfigEditor\Main
+commands:
+    cfg:
+        description: "Edits a config. Open one first using /opencfg"
+        usage: "/cfg <read|set|get|del|save> [key] [value]"
+    opencfg:
+        description: "Opens a config that you can edit using /cfg"
+        usage: "/opencfg <plugin name> <file of the config>"
+        permission: cfg.cmd.open
+    closecfg:
+        description: "Closes the currently open config"
+        usage: "/closecfg"
+        permission: cfg.cmd.close
+permissions:
+    cfg.cmd:
+        default: op
+        description: Main ConfigEditor permission.
+        children:
+            cfg.cmd.open:
+                default: op
+                description: Permission for /opencfg
+            cfg.cmd.close:
+                default: op
+                description: Permission for /closeconfig
+            cfg.cmd.edit:
+                default: op
+                description: Permission for /cfg
+                children:
+                    cfg.cmd.edit.read:
+                        default: op
+                        description: Permission for /cfg read
+                    cfg.cmd.edit.set:
+                        default: op
+                        description: Permission for /cfg set
+                    cfg.cmd.edit.get:
+                        default: op
+                        description: Permission for /cfg get
+                    cfg.cmd.edit.del:
+                        default: op
+                        description: Permission for /cfg del
+                    cfg.cmd.edit.save:
+                        default: op
+                        description: Permission for /cfg save
+...
